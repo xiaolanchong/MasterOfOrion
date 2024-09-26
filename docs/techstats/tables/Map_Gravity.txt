@@ -1,0 +1,6 @@
+Map__-__Gravity
+0=Ultra Poor, 0
+1=Poor, 0
+2=Abundant, 0
+3=Rich, 1
+4=Ultra Rich, 1

@@ -1,0 +1,8 @@
+Number,	Tech number, ??? Fighter hit point bonus?, Ground troop bonus, Bonuses added to ship's hull, armour and systems, in percent, Missile hit point bonus?
+0=No Armor		  , 0,   0, 0,  0, -100,  0
+1=Titanium Armor  , 1, 187, 1,  5,   0,   0
+2=Tritanium Armor , 2, 191, 2, 10, 100,  50
+3=Zortrium Armor  , 3, 203, 3, 15, 300, 100
+4=Neutronium Armor, 4, 117, 4, 20, 500, 150
+5=Adamantium Armor, 5,   2, 6, 25, 700, 200
+6=Xentronium Armor, 6, 201, 6, 30, 900, 250

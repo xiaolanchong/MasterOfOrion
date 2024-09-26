@@ -1,0 +1,6 @@
+Planet's Mineral Richness
+0=Ultra-Poor, 1
+1=Poor, 2
+2=Abundant, 3
+3=Rich, 5
+4=Ultra-Rich, 8

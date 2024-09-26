@@ -1,0 +1,1345 @@
+[Script]
+Type=0
+Version=1.0
+Comment=Game's Balance Tables.||Delivered in a standard complete set of the program.
+GamePlatform=1
+GameVersion=1.3
+Author=Grig de Griz
+
+[Tables]
+Count=26
+Table0=Artemis'__Chance__Table
+Table1=Armors__Table
+Table2=Buildings__Table
+Table3=Base__Food__per__Unit__Table
+Table4=Base__Industry__per__Unit__Table
+Table5=Map__-__Gravity__Table
+Table6=Map__-__Orbit__to__Satellite__Table
+Table7=Map__-__Star__to__Mineral__Table
+Table8=Map__-__Star__to__Number__of__Satellites
+Table9=Max__Population__Table
+Table10=Maintenance__Penalties__Table
+Table11=Mods__Table
+Table12=Planetary__Shields__Table
+Table13=Population__Bonus__Table
+Table14=Rifles__Table
+Table15=Ship's__Drives__Table
+Table16=Ship's__Computers__Table
+Table17=Ship's__Fuel__Cells__Table
+Table18=Ship's__Hull__Types__Table
+Table19=Ship's__Shields__Table
+Table20=Specials__Table
+Table21=Technology__Fields__Table
+Table22=Technologys__Table
+Table23=Troop's__Shields__Table
+Table24=Troop__Units__Table
+Table25=Weapons__Table
+
+[Table_Artemis'__Chance__Table]
+Offset=1413432
+Name=Artemis' Chance Table
+RecordCount=1
+ValueCount=6
+
+[Records_Names_Artemis'__Chance__Table]
+0=Chance of Being Damaged
+
+[Values_Names_Artemis'__Chance__Table]
+0=Frigate
+1=Destroyer
+2=Cruiser
+3=Battleship
+4=Titan
+5=Doom Star
+
+[Values_Types_Artemis'__Chance__Table]
+0=Word
+1=Word
+2=Word
+3=Word
+4=Word
+5=Word
+
+[Table_Armors__Table]
+Offset=1390992
+Name=Armors Table
+RecordCount=7
+ValueCount=8
+
+[Records_Names_Armors__Table]
+0=No Armor
+1=Titanium Armor
+2=Tritanium Armor
+3=Zortrium Armor
+4=Neutronium Armor
+5=Adamantium Armor
+6=Xentronium Armor
+
+[Values_Names_Armors__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=??? Fighter hit point bonus?
+4=Ground troop bonus
+5=Bonuses added to ship's hull, armour and systems, in percent
+6=??? always 0
+7=??? Missile hit point bonus?
+
+[Values_Types_Armors__Table]
+0=LongWord
+1=Word
+2=Word
+3=Byte
+4=Byte
+5=SmallInt
+6=Word
+7=Byte
+
+[Table_Buildings__Table]
+Offset=1388176
+Name=Buildings Table
+RecordCount=49
+ValueCount=7
+
+[Records_Names_Buildings__Table]
+0=No Building
+1=Alien Control Center
+2=Armor Barracks
+3=Artemis System Net
+4=Astro University
+5=Atmosphere Renewer
+6=Autolab
+7=Automated Factory
+8=Battlestation
+9=Capitol
+10=Cloning Center
+11=Colony Base
+12=Deep Core Mine
+13=Core Waste Dump
+14=Dimensional Portal
+15=Biospheres
+16=Food Replicators
+17=Gaia Transformation
+18=Currency Exchange
+19=Galactic Cybernet
+20=Holo Simulator
+21=Hydroponic Farm
+22=Marine Barracks
+23=Barrier Shield
+24=Flux Shield
+25=Gravity Generator
+26=Missile Base
+27=Ground Batteries
+28=Radiation Shield
+29=Stock Exchange
+30=Supercomputer
+31=Pleasure Dome
+32=Pollution Processor
+33=Recyclotron
+34=Robotic Factory
+35=Research Lab
+36=Robo Miner Plant
+37=Soil Enrichment
+38=Space Academy
+39=Spaceport
+40=Star Base
+41=Star Fortress
+42=Stellar Converter
+43=Subterranean Farms
+44=Terraforming
+45=Warp Interdictor
+46=Weather Controller
+47=Fighter Garrison
+48=Artificial Planet
+
+[Values_Names_Buildings__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=Production cost
+4=Maintenance cost
+5=??? Hits during space bombardments?
+6=??? always 0
+
+[Values_Types_Buildings__Table]
+0=LongWord
+1=Word
+2=Word
+3=LongInt
+4=Word
+5=Byte
+6=LongWord
+
+[Table_Base__Food__per__Unit__Table]
+Offset=1409680
+Name=Base Food per Unit Table
+RecordCount=1
+ValueCount=10
+
+[Records_Names_Base__Food__per__Unit__Table]
+0=Planet's Environments
+
+[Values_Names_Base__Food__per__Unit__Table]
+0=Toxic
+1=Radiated
+2=Barren
+3=Desert
+4=Tundra
+5=Ocean
+6=Swamp
+7=Arid
+8=Terran
+9=Gaia
+
+[Values_Types_Base__Food__per__Unit__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+5=Byte
+6=Byte
+7=Byte
+8=Byte
+9=Byte
+
+[Table_Base__Industry__per__Unit__Table]
+Offset=1369440
+Name=Base Industry per Unit Table
+RecordCount=1
+ValueCount=5
+
+[Records_Names_Base__Industry__per__Unit__Table]
+0=Planet's Mineral Richness
+
+[Values_Names_Base__Industry__per__Unit__Table]
+0=Ultra-Poor
+1=Poor
+2=Abundant
+3=Rich
+4=Ultra-Rich
+
+[Values_Types_Base__Industry__per__Unit__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+
+[Table_Map__-__Gravity__Table]
+Offset=1409408
+Name=Map - Gravity Table
+RecordCount=5
+ValueCount=5
+
+[Records_Names_Map__-__Gravity__Table]
+0=Ultra Poor
+1=Poor
+2=Abundant
+3=Rich
+4=Ultra Rich
+
+[Values_Names_Map__-__Gravity__Table]
+0=Tiny
+1=Small
+2=Medium
+3=Large
+4=Huge
+
+[Values_Types_Map__-__Gravity__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+
+[Table_Map__-__Orbit__to__Satellite__Table]
+Offset=1409288
+Name=Map - Orbit to Satellite Table
+RecordCount=10
+ValueCount=5
+
+[Records_Names_Map__-__Orbit__to__Satellite__Table]
+0=Random #0
+1=Random #1
+2=Random #2
+3=Random #3
+4=Random #4
+5=Random #5
+6=Random #6
+7=Random #7
+8=Random #8
+9=Random #9
+
+[Values_Names_Map__-__Orbit__to__Satellite__Table]
+0=Orbit #1
+1=Orbit #2
+2=Orbit #3
+3=Orbit #4
+4=Orbit #5
+
+[Values_Types_Map__-__Orbit__to__Satellite__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+
+[Table_Map__-__Star__to__Mineral__Table]
+Offset=1409344
+Name=Map - Star to Mineral Table
+RecordCount=10
+ValueCount=6
+
+[Records_Names_Map__-__Star__to__Mineral__Table]
+0=Random #0
+1=Random #1
+2=Random #2
+3=Random #3
+4=Random #4
+5=Random #5
+6=Random #6
+7=Random #7
+8=Random #8
+9=Random #9
+
+[Values_Names_Map__-__Star__to__Mineral__Table]
+0=Blue-White
+1=White
+2=Yellow
+3=Orange
+4=Red
+5=Brown
+
+[Values_Types_Map__-__Star__to__Mineral__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+5=Byte
+
+[Table_Map__-__Star__to__Number__of__Satellites]
+Offset=1409224
+Name=Map - Star to Number of Satellites
+RecordCount=10
+ValueCount=6
+
+[Records_Names_Map__-__Star__to__Number__of__Satellites]
+0=Random #0
+1=Random #1
+2=Random #2
+3=Random #3
+4=Random #4
+5=Random #5
+6=Random #6
+7=Random #7
+8=Random #8
+9=Random #9
+
+[Values_Names_Map__-__Star__to__Number__of__Satellites]
+0=Blue-White
+1=White
+2=Yellow
+3=Orange
+4=Red
+5=Brown
+
+[Values_Types_Map__-__Star__to__Number__of__Satellites]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+5=Byte
+
+[Table_Max__Population__Table]
+Offset=1409648
+Name=Max Population Table
+RecordCount=1
+ValueCount=5
+
+[Records_Names_Max__Population__Table]
+0=Planet's Size
+
+[Values_Names_Max__Population__Table]
+0=Tiny
+1=Small
+2=Medium
+3=Large
+4=Huge
+
+[Values_Types_Max__Population__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+
+[Table_Maintenance__Penalties__Table]
+Offset=1369448
+Name=Maintenance Penalties Table
+RecordCount=1
+ValueCount=10
+
+[Records_Names_Maintenance__Penalties__Table]
+0=Planet's Environments
+
+[Values_Names_Maintenance__Penalties__Table]
+0=Toxic
+1=Radiated
+2=Barren
+3=Desert
+4=Tundra
+5=Ocean
+6=Swamp
+7=Arid
+8=Terran
+9=Gaia
+
+[Values_Types_Maintenance__Penalties__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+5=Byte
+6=Byte
+7=Byte
+8=Byte
+9=Byte
+
+[Table_Mods__Table]
+Offset=1392752
+Name=Mods Table
+RecordCount=15
+ValueCount=6
+
+[Records_Names_Mods__Table]
+0=No Mods
+1=Heavy Mount
+2=Point Defense
+3=Armor Piercing
+4=Continuous
+5=No Range Dissipation
+6=Shield Piercing
+7=Auto Fire
+8=Enveloping
+9=Mirv
+10=ECCM
+11=Heavily Armored
+12=Fast
+13=Emmisions Guidance
+14=Overloaded
+
+[Values_Names_Mods__Table]
+0=Pointer, no changing!
+1=Pointer, no changing!
+2=??? Bit mask?
+3=Size increase (in percents)
+4=Cost increase (in percents)
+5=???
+
+[Values_Types_Mods__Table]
+0=LongWord
+1=LongWord
+2=Word
+3=SmallInt
+4=SmallInt
+5=Byte
+
+[Table_Planetary__Shields__Table]
+Offset=1369160
+Name=Planetary Shields Table
+RecordCount=4
+ValueCount=2
+
+[Records_Names_Planetary__Shields__Table]
+0=No Shield
+1=Planetary Radiation Shield
+2=Planetary Flux Shield
+3=Planetary Barrier Shield
+
+[Values_Names_Planetary__Shields__Table]
+0=Tech number
+1=Shield points
+
+[Values_Types_Planetary__Shields__Table]
+0=Word
+1=Byte
+
+[Table_Population__Bonus__Table]
+Offset=1369520
+Name=Population Bonus Table
+RecordCount=1
+ValueCount=10
+
+[Records_Names_Population__Bonus__Table]
+0=Planet's Environments
+
+[Values_Names_Population__Bonus__Table]
+0=Toxic
+1=Radiated
+2=Barren
+3=Desert
+4=Tundra
+5=Ocean
+6=Swamp
+7=Arid
+8=Terran
+9=Gaia
+
+[Values_Types_Population__Bonus__Table]
+0=Byte
+1=Byte
+2=Byte
+3=Byte
+4=Byte
+5=Byte
+6=Byte
+7=Byte
+8=Byte
+9=Byte
+
+[Table_Rifles__Table]
+Offset=1369128
+Name=Rifles Table
+RecordCount=6
+ValueCount=2
+
+[Records_Names_Rifles__Table]
+0=No Rifle
+1=Pulse Rifle
+2=Laser Rifle
+3=Fusion Rifle
+4=Phasor Rifle
+5=Plasma Rifle
+
+[Values_Names_Rifles__Table]
+0=Tech number
+1=Ground troop bonus
+
+[Values_Types_Rifles__Table]
+0=Word
+1=Byte
+
+[Table_Ship's__Drives__Table]
+Offset=1393120
+Name=Ship's Drives Table
+RecordCount=7
+ValueCount=22
+
+[Records_Names_Ship's__Drives__Table]
+0=No Drive
+1=Nuclear Drive
+2=Fusion Drive
+3=Ion Drive
+4=Antimatter Drive
+5=Hyper Drive
+6=Interphased Drive
+
+[Values_Names_Ship's__Drives__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=??? always 0
+4=??? always 0
+5=??? always 0
+6=??? always 0
+7=??? always 0
+8=??? always 0
+9=Frigate
+10=Destroyer
+11=Cruiser
+12=Battleship
+13=Titan
+14=Doom Star
+15=Frigate
+16=Destroyer
+17=Cruiser
+18=Battleship
+19=Titan
+20=Doom Star
+21=Flight speed (parsecs per turn)
+
+[Values_Types_Ship's__Drives__Table]
+0=LongWord
+1=Word
+2=Word
+3=LongWord
+4=LongWord
+5=LongWord
+6=LongWord
+7=LongWord
+8=LongWord
+9=Byte
+10=Byte
+11=Byte
+12=Byte
+13=Byte
+14=Byte
+15=Byte
+16=Byte
+17=Byte
+18=Byte
+19=Byte
+20=Byte
+21=Word
+
+[Table_Ship's__Computers__Table]
+Offset=1392984
+Name=Ship's Computers Table
+RecordCount=6
+ValueCount=10
+
+[Records_Names_Ship's__Computers__Table]
+0=No Computer
+1=Electronic Computer
+2=Optronic Computer
+3=Positronic Computer
+4=Cybertronic Computer
+5=Moleculartronic Computer
+
+[Values_Names_Ship's__Computers__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=Cost for Frigate
+4=Cost for Destroyer
+5=Cost for Cruiser
+6=Cost for Battleship
+7=Cost for Titan
+8=Cost for Doom Star
+9=Beam offense bonus
+
+[Values_Types_Ship's__Computers__Table]
+0=LongWord
+1=Word
+2=Word
+3=Word
+4=Word
+5=Word
+6=Word
+7=Word
+8=Word
+9=Word
+
+[Table_Ship's__Fuel__Cells__Table]
+Offset=1393496
+Name=Ship's Fuel Cells Table
+RecordCount=6
+ValueCount=4
+
+[Records_Names_Ship's__Fuel__Cells__Table]
+0=No Fuel Cells
+1=Standard Fuel Cells
+2=Deuterium Fuel Cells
+3=Iridium Fuel Cells
+4=Urridium Fuel Cells
+5=Thorium Fuel Cells
+
+[Values_Names_Ship's__Fuel__Cells__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=Distance of flight (per parsecs) without refueling
+
+[Values_Types_Ship's__Fuel__Cells__Table]
+0=LongWord
+1=Word
+2=Word
+3=Word
+
+[Table_Ship's__Hull__Types__Table]
+Offset=1393560
+Name=Ship's Hull Types Table
+RecordCount=9
+ValueCount=16
+
+[Records_Names_Ship's__Hull__Types__Table]
+0=Frigate
+1=Destroyer
+2=Cruiser
+3=Battleship
+4=Titan
+5=Doom Star
+6=Star Base
+7=Battlestation
+8=Star Fortress
+
+[Values_Names_Ship's__Hull__Types__Table]
+0=Cost
+1=Free space (tonnage)
+2=Quantity the marines
+3=Base armor points
+4=Base structure points
+5=Quantity of computer damages
+6=Quantity of drive damages
+7=Quantity of shield damages
+8=??? Something in strategical combat?
+9=??? Something in strategical combat?
+10=??? Something in strategical combat?
+11=??? Something in strategical combat?
+12=??? Something in strategical combat?
+13=Structure points in strategical combat?
+14=Pointer, no changing!
+15=Pointer, no changing!
+
+[Values_Types_Ship's__Hull__Types__Table]
+0=Word
+1=Word
+2=Word
+3=Word
+4=Word
+5=Word
+6=Word
+7=Word
+8=Word
+9=Word
+10=Word
+11=Word
+12=SmallInt
+13=Word
+14=LongWord
+15=LongWord
+
+[Table_Ship's__Shields__Table]
+Offset=1391104
+Name=Ship's Shields Table
+RecordCount=6
+ValueCount=24
+
+[Records_Names_Ship's__Shields__Table]
+0=No Shield
+1=Class I Shield
+2=Class III Shield
+3=Class V Shield
+4=Class VII Shield
+5=Class X Shield
+
+[Values_Names_Ship's__Shields__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=Base Space for Frigate
+4=Base Space for Destroyer
+5=Base Space for Cruiser
+6=Base Space for Battleship
+7=Base Space for Titan
+8=Base Space for Doom Star
+9=Base Cost for Frigate
+10=Base Cost for Destroyer
+11=Base Cost for Cruiser
+12=Base Cost for Battleship
+13=Base Cost for Titan
+14=Base Cost for Doom Star
+15=Damage point blocked
+16=??? always 0
+17=??? always 0
+18=??? always 0
+19=??? always 0
+20=??? always 0
+21=??? always 0
+22=??? always 0
+23=??? Something in strategical combat?
+
+[Values_Types_Ship's__Shields__Table]
+0=LongWord
+1=Word
+2=Word
+3=Word
+4=Word
+5=Word
+6=Word
+7=Word
+8=Word
+9=Word
+10=Word
+11=Word
+12=Word
+13=Word
+14=Word
+15=Byte
+16=LongWord
+17=LongWord
+18=LongWord
+19=LongWord
+20=LongWord
+21=LongWord
+22=Byte
+23=Byte
+
+[Table_Specials__Table]
+Offset=1389112
+Name=Specials Table
+RecordCount=40
+ValueCount=23
+
+[Records_Names_Specials__Table]
+0=No Special
+1=Achilles Targeting Unit
+2=Augmented Engines
+3=Automated Repair Unit
+4=Battle Pods
+5=Battle Scanner
+6=Cloaking Device
+7=Damper Field
+8=Displacement Device
+9=Ecm Jammer
+10=Energy Absorber
+11=Extended Fuel Tanks
+12=Fast Missile Racks
+13=Hard Shields
+14=Heavy Armor
+15=High Energy Focus
+16=Hyper-X Capacitors
+17=Inertial Nullifier
+18=Inertial Stabilizer
+19=Lightning Field
+20=Multi-Phased Shields
+21=Multi-Wave Ecm Jammer
+22=Phase Shifter
+23=Phasing Cloak
+24=Quantum Detonator
+25=Rangemaster Unit
+26=Reflection Field
+27=Reinforced Hull
+28=Scout Lab
+29=Security Stations
+30=Shield Capacitor
+31=Stealth Field
+32=Structural Analyzer
+33=Sub Space Teleporter
+34=Time Warp Facilitator
+35=Transporters
+36=Troop Pods
+37=Warp Dissipator
+38=Wide Area Jammer
+39=Regeneration
+
+[Values_Names_Specials__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech number
+3=Size for Frigate
+4=Size for Destroyer
+5=Size for Cruiser
+6=Size for Battleship
+7=Size for Titan
+8=Size for Doom Star
+9=Cost for Frigate
+10=Cost for Destroyer
+11=Cost for Cruiser
+12=Cost for Battleship
+13=Cost for Titan
+14=Cost for Doom Star
+15=???
+16=???
+17=???
+18=???
+19=???
+20=???
+21=Class of Special
+22=???
+
+[Values_Types_Specials__Table]
+0=LongWord
+1=Word
+2=Word
+3=SmallInt
+4=SmallInt
+5=SmallInt
+6=SmallInt
+7=SmallInt
+8=SmallInt
+9=Word
+10=Word
+11=Word
+12=Word
+13=Word
+14=Word
+15=Word
+16=Word
+17=Word
+18=Byte
+19=LongWord
+20=Byte
+21=Byte
+22=Word
+
+[Table_Technology__Fields__Table]
+Offset=1383504
+Name=Technology Fields Table
+RecordCount=83
+ValueCount=8
+
+[Records_Names_Technology__Fields__Table]
+0=Starting Technology
+1=Advanced Biology
+2=Advanced Chemistry
+3=Advanced Construction
+4=Advanced Engineering
+5=Advanced Fusion
+6=Advanced Governments
+7=Advanced Magnetism
+8=Advanced Manufacturing
+9=Advanced Metallurgy
+10=Military Tactics
+11=Advanced Robotics
+12=Teaching Methods
+13=Anti-Matter Fission
+14=Artificial Consciousness
+15=Artificial Intelligence
+16=Artificial Gravity
+17=Artificial Life
+18=Astro Biology
+19=Astro Construction
+20=Astro Engineering
+21=Capsule Construction
+22=Chemistry
+23=Cold Fusion
+24=Cybertechnics
+25=Cybertronics
+26=Distortion Fields
+27=Electromagnetic Refraction
+28=Electronics
+29=Engineering
+30=Evolutionary Genetics
+31=Fusion Physics
+32=Galactic Economics
+33=Galactic Networking
+34=Genetic Engineering
+35=Genetic Mutations
+36=Gravitic Fields
+37=High Energy Distribution
+38=Hyper Dimensional Fission
+39=Hyper Dimensional Physics
+40=Interphased Fission
+41=Ion Fission
+42=Superscalar Construction
+43=Macro Economics
+44=Macro Genetics
+45=Magneto Gravitics
+46=Matter Energy Conversion
+47=Molecular Compression
+48=Molecular Control
+49=Moleculatronics
+50=Molecular Manipulation
+51=Multi-Dimensional Physics
+52=Multi-Phased Physics
+53=Nano Technology
+54=Neutrino Physics
+55=Nuclear Fission
+56=Optronics
+57=Physics
+58=Planetoid Construction
+59=Plasma Physics
+60=Positronics
+61=Quantum Fields
+62=Robotics
+63=Servo Mechanics
+64=Subspace Fields
+65=Subspace Physics
+66=Tachyon Physics
+67=Tectonic Engineering
+68=Temporal Fields
+69=Temporal Physics
+70=Trans Genetics
+71=Transwarp Fields
+72=Warp Fields
+73=Xeno Relations
+74=Xenon Technology
+75=Hyper Biology
+76=Hyper Power
+77=Hyper Physics
+78=Hyper Construction
+79=Hyper Fields
+80=Hyper Chemistry
+81=Hyper Computers
+82=Hyper Sociology
+
+[Values_Names_Technology__Fields__Table]
+0=Pointer, no changing!
+1=Number
+2=Previous field
+3=Next field
+4=??? always 0
+5=??? always 0
+6=Research points
+7=Tech level
+
+[Values_Types_Technology__Fields__Table]
+0=LongWord
+1=Word
+2=Word
+3=Word
+4=LongWord
+5=LongWord
+6=LongInt
+7=Byte
+
+[Table_Technologys__Table]
+Offset=1385416
+Name=Technologys Table
+RecordCount=212
+ValueCount=6
+
+[Records_Names_Technologys__Table]
+0=No Technology
+1=Achilles Targeting Unit
+2=Adamantium Armor
+3=Advanced City Planning
+4=Advanced Damage Control
+5=Alien Management Center
+6=Android Farmers
+7=Android Scientists
+8=Android Workers
+9=Anti-Grav Harness
+10=Anti-Matter Bomb
+11=Anti-Matter Drive
+12=Anti-Matter Torpedoes
+13=Anti-Missile Rockets
+14=Armor Barracks
+15=Artemis System Net
+16=Planet Construction
+17=Assault Shuttles
+18=Astro University
+19=Atmospheric Renewer
+20=Augmented Engines
+21=Autolab
+22=Automated Factories
+23=Automated Repair Unit
+24=Battleoids
+25=Battle Pods
+26=Battle Scanner
+27=Battlestation
+28=Bio-Terminator
+29=Biomorphic Fungi
+30=Black Hole Generator
+31=Bomber Bays
+32=Capitol
+33=Class I Shield
+34=Class III Shield
+35=Class V Shield
+36=Class VII Shield
+37=Class X Shield
+38=Cloaking Device
+39=Cloning Center
+40=Colony Base
+41=Colony Ship
+42=Confederation
+43=Cyber-Security Link
+44=Cybertronic Computer
+45=Damper Field
+46=Dauntless Guidance System
+47=Death Ray
+48=Death Spores
+49=Deep Core Mining
+50=Core Waste Dumps
+51=Deuterium Fuel Cells
+52=Dimensional Portal
+53=Displacement Device
+54=Disrupter Cannon
+55=Doom Star Construction
+56=Reinforced Hull
+57=Ecm Jammer
+58=Electronic Computer
+59=Emissions Guidance System
+60=Energy Absorber
+61=Biospheres
+62=Evolutionary Mutation
+63=Extended Fuel Tanks
+64=Fast Missile Racks
+65=Federation
+66=Fighter Bays
+67=Fighter Garrison
+68=Food Replicators
+69=Freighters
+70=Fusion Beam
+71=Fusion Bomb
+72=Fusion Drive
+73=Fusion Rifle
+74=Gaia Transformation
+75=Galactic Currency Exchange
+76=Galactic Cybernet
+77=Galactic Unification
+78=Gauss Cannon
+79=Graviton Beam
+80=Gyro Destabilizer
+81=Hard Shields
+82=Heavy Armor
+83=Heavy Fighter Bays
+84=Heightened Intelligence
+85=High Energy Focus
+86=Holo Simulator
+87=Hydroponic Farm
+88=Hyper Drive
+89=Megafluxers
+90=Hyper-X Capacitors
+91=Hyperspace Communications
+92=Imperium
+93=Inertial Nullifier
+94=Inertial Stabilizer
+95=Interphased Drive
+96=Ion Drive
+97=Ion Pulse Cannon
+98=Iridium Fuel Cells
+99=Jump Gate
+100=Laser Cannon
+101=Laser Rifle
+102=Lightning Field
+103=Marine Barracks
+104=Mass Driver
+105=Mauler Device
+106=Merculite Missile
+107=Microbiotics
+108=Microlite Construction
+109=Outpost Ship
+110=Moleculartronic Computer
+111=Multi-Wave Ecm Jammer
+112=Multi-Phased Shields
+113=Nano Disassemblers
+114=Neural Scanner
+115=Neutron Blaster
+116=Neutron Scanner
+117=Neutronium Armor
+118=Neutronium Bomb
+119=Nuclear Bomb
+120=Nuclear Drive
+121=Nuclear Missile
+122=Optronic Computer
+123=Particle Beam
+124=Personal Shield
+125=Phase Shifter
+126=Phasing Cloak
+127=Phasor
+128=Phasor Rifle
+129=Planetary Barrier Shield
+130=Planetary Flux Shield
+131=Planetary Gravity Generator
+132=Planetary Missile Base
+133=Ground Batteries
+134=Planetary Radiation Shield
+135=Planetary Stock Exchange
+136=Planetary Supercomputer
+137=Plasma Cannon
+138=Plasma Rifle
+139=Plasma Torpedoes
+140=Plasma Web
+141=Pleasure Dome
+142=Pollution Processor
+143=Positronic Computer
+144=Powered Armor
+145=Pulse Rifle
+146=Proton Torpedoes
+147=Psionics
+148=Pulsar
+149=Pulson Missile
+150=Quantum Detonator
+151=Rangemaster Unit
+152=Recyclotron
+153=Reflection Field
+154=Robotic Factory
+155=Research Laboratory
+156=Robo-Miners
+157=Space Scanner
+158=Scout Lab
+159=Security Stations
+160=Sensors
+161=Shield Capacitors
+162=Soil Enrichment
+163=Space Academy
+164=Spaceport
+165=Spatial Compressor
+166=Spy Network
+167=Standard Fuel Cells
+168=Star Base
+169=Star Fortress
+170=Star Gate
+171=Stasis Field
+172=Stealth Field
+173=Stealth Suit
+174=Stellar Converter
+175=Structural Analyzer
+176=Sub-Space Communications
+177=Sub-Space Teleporter
+178=Subterranean Farms
+179=Survival Pods
+180=Tachyon Communications
+181=Tachyon Scanner
+182=Telepathic Training
+183=Terraforming
+184=Thorium Fuel Cells
+185=Time Warp Facilitator
+186=Titan Construction
+187=Titanium Armor
+188=Tractor Beam
+189=Transport
+190=Transporters
+191=Tritanium Armor
+192=Troop Pods
+193=Universal Antidote
+194=Urridium Fuel Cells
+195=Virtual Reality Network
+196=Warp Dissipater
+197=Warp Interdictor
+198=Weather Control System
+199=Wide Area Jammer
+200=Xeno Psychology
+201=Xentronium Armor
+202=Zeon Missile
+203=Zortrium Armor
+204=Biology
+205=Power
+206=Physics
+207=Construction
+208=Fields
+209=Chemistry
+210=Computers
+211=Sociology
+
+[Values_Names_Technologys__Table]
+0=Pointer, no changing!
+1=Number
+2=Tech field number
+3=???
+4=Tech class
+5=???
+
+[Values_Types_Technologys__Table]
+0=LongWord
+1=Word
+2=SmallInt
+3=Byte
+4=Word
+5=Word
+
+[Table_Troop's__Shields__Table]
+Offset=1369152
+Name=Troop's Shields Table
+RecordCount=2
+ValueCount=2
+
+[Records_Names_Troop's__Shields__Table]
+0=No Shield
+1=Personal Shield
+
+[Values_Names_Troop's__Shields__Table]
+0=Tech number
+1=Ground troop bonus
+
+[Values_Types_Troop's__Shields__Table]
+0=Word
+1=Byte
+
+[Table_Troop__Units__Table]
+Offset=1393448
+Name=Troop Units Table
+RecordCount=4
+ValueCount=5
+
+[Records_Names_Troop__Units__Table]
+0=No Unit
+1=Marines
+2=Armor
+3=Battleoid
+
+[Values_Names_Troop__Units__Table]
+0=Pointer, no changing!
+1=Number
+2=??? Build cost?
+3=??? Hits? Offence? Defence?
+4=??? Hits? Offence? Defence?
+
+[Values_Types_Troop__Units__Table]
+0=LongWord
+1=Word
+2=Word
+3=Word
+4=Word
+
+[Table_Weapons__Table]
+Offset=1391464
+Name=Weapons Table
+RecordCount=46
+ValueCount=14
+
+[Records_Names_Weapons__Table]
+0=No Weapons
+1=Mass Driver
+2=Gauss Cannon
+3=Laser Cannon
+4=Particle Beam
+5=Fusion Beam
+6=Ion Pulse Cannon
+7=Graviton Beam
+8=Neutron Blaster
+9=Phasor
+10=Disrupter
+11=Death Ray
+12=Plasma Cannon
+13=Spatial Compressor
+14=Nuclear Missile
+15=Merculite Missile
+16=Pulson Missile
+17=Zeon Missile
+18=Anti-Matter Torpedo
+19=Proton Torpedo
+20=Plasma Torpedo
+21=Nuclear Bomb
+22=Fusion Bomb
+23=Anti-Matter Bomb
+24=Neutronium Bomb
+25=Death Spore
+26=Bio-Terminator
+27=Mauler Device
+28=Assault Shuttle
+29=Heavy Fighter
+30=Bomber
+31=Interceptor
+32=Stasis Field
+33=Anti-Missile Rocket
+34=Gyro Destabilizer
+35=Plasma Web
+36=Pulsar
+37=Black Hole Generator
+38=Stellar Converter
+39=Tractor Beam
+40=Dragon Breath
+41=Phasor Eye
+42=Crystal Ray
+43=Plasma Breath
+44=Plasma Flux
+45=Caustic Slime
+
+[Values_Names_Weapons__Table]
+0=Pointer, no changing!
+1=Pointer, no changing!
+2=Number
+3=Tech number
+4=Class
+5=Ammo count
+6=Space
+7=Cost
+8=Characteristics (bit mask)
+9=Min. damage?
+10=Max. damage?
+11=??? Obsolete min. damage?
+12=??? Obsolete max. damage?
+13=Acceptable mods (bit mask)
+
+[Values_Types_Weapons__Table]
+0=LongWord
+1=LongWord
+2=Word
+3=Word
+4=Byte
+5=Byte
+6=Word
+7=Word
+8=Word
+9=Word
+10=Word
+11=Byte
+12=Byte
+13=Word

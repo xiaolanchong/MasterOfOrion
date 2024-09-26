@@ -1,0 +1,11 @@
+Planet's Environments, Base__Food__per__Unit
+0=Toxic, 0
+1=Radiated, 0
+2=Barren, 0
+3=Desert, 1
+4=Tundra, 1
+5=Ocean, 2
+6=Swamp, 2
+7=Arid, 1
+8=Terran, 2
+9=Gaia, 3

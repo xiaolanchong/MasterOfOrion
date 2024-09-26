@@ -1,0 +1,7 @@
+Ship, Chance of Being Damaged %
+0=Frigate, 20
+1=Destroyer, 30
+2=Cruiser, 40
+3=Battleship, 50
+4=Titan, 80
+5=Doom Star, 100

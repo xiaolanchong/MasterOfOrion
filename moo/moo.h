@@ -7,5 +7,4 @@
 #include <memory>
 // TODO: Reference additional headers your program requires here.
 
-struct SDL_Surface;
-using SDL_SurfacePtr = std::shared_ptr<SDL_Surface>;
+

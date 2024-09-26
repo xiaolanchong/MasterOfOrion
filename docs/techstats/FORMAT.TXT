@@ -1,0 +1,161 @@
+	OCL 'MOO2' Editor, Input Text File Data Format.
+
+[TECHFIELDS]:
+Name, 	(obvious)
+Number, (probably useless)
+?,
+?,
+?,
+?,
+RP cost,
+Tech Level;
+
+[TECHNOLOGIES]:
+Name,
+Number (useless too),
+Tech Field,
+?,
+?, (AI value?)
+?;
+
+[BUILDINGS]:
+Name,
+Number (got to remove this field),
+Prereq. technology,
+Production cost,
+Maintenance cost,
+?, (Hit points during space bombardments?)
+?;
+
+[SPECIALS]:
+Name,
+Number,
+Prereq. tech,
+Sizes (for each of the six ship classes),
+Costs (for all six ships as well),
+? (The effect assigned to the special system?),
+?,
+?,
+?,
+?,
+?,
+?;
+
+[ARMOUR]:
+Name,
+Number,
+Prereq. tech,
+?, (Fighter hit points?)
+?, (I'm at a loss)
+Bonuses given to ship's hull, armour and systems, in percents (?),
+?, (Missile h.p. bonuses?);
+
+[SHIELDS]:
+Name,
+Number,
+Prereq. tech,
+Costs, (for six ship classes)
+Sizes, (for six ships)
+Class rating, (how much h.p. are absorbed completely)
+?, ...
+
+[WEAPONS]:
+Name,
+Number,
+Prereq. tech,
+Weapon class, (0 = beam, 1 = missile, 2 = torp., 3 = bomb or bioweapon, 4 = 
+	       autonomous vessel (i.e. fighters, shuttles, ...), 5 = smth.
+	       special (AMR, Stellar Converter, Caustic Slime,...))
+Ammo count, (255 = unlimited, like beams)
+Weapon characteristics flags:
+(
+This is flags:
+
+	0000100100110100
+	|              |
+	flag #15       flag #0
+
+If a flag is set (=1), that means the corresponding statement is true.
+Otherwise, it's false.
+
+#0: None (not used);
+#1: Double range damage penalties (Fusion Beam, Plasma Cannon);
+#2: Damage not reduced by range (Mass Driver, Gauss Cannon);
+#3: Damages internal systems directly (Ion Pulse Cannon);
+#4: Kills people onboard (Neutron Blaster, Death Ray);
+#5: Extra structural damage (Graviton Beam);
+#6: ? (Some Death Ray property);
+#7: Is a biological weapon;
+#8: Ignores shields (Particle Beam);
+#9: Enveloping (Plasma Cannon);
+#10: Always hits (Mauler Device);
+#11: Damage reduced by range (Plasma Torpedo);
+#12: Damages everything in two-square radius (Spatial Compressor);
+#13: not used;
+#14: not used;
+#15: not used;
+
+ 
+)
+Min. damage, (?)
+Max. damage, (?)
+?, (Obsolete min. damage?)
+?, (Obsolete max. damage?)
+Acceptable mods flags (see [MODS] section in the input file and the "Weapon
+characteristic flags" field here for an understanding of how these work);
+
+[COMPUTERS]:
+Name,
+Number,
+Prereq. technology,
+Costs (for all six ship classes),
+Beam offense bonus;
+
+[DRIVES]:
+Dunno here; The field before the last one is parsecs per turn.
+
+[UNITS]:
+Don't think this one works at all.
+
+[FUELCELLS]:
+Name,
+Number,
+Prereq. tech,
+Allowed radius (parsecs);
+
+[MODS]:
+Name,
+Number,
+?, (Some flags)
+Size increase (in percents),
+Cost increase (in percents),
+?;
+
+[MODSABBREV]:
+Just an abbreviated form of a mod's full name, like "Heavy Mounted" -> "Hv".
+
+[WEAPONSPLURAL]:
+Weapon names in plural, like "Laser Cannons" for Laser Cannon.
+
+[SHIPS]:
+(This block includes star bases as well!!)
+Name, 
+Number,
+Basic cost,
+Hull size,
+Basic hull integrity,
+Basic armour rating, (the last two maybe actually vica versa)
+?, ...
+
+
+[SHIPSPLURAL]:
+Obvious.
+
+-------------------------------------------------------------------------------
+
+Please send new information on the data format, notes and suggestions on this
+text to the following address:
+
+		Yulmukhametov@bsu.bashedu.ru
+
+or to the 'sff.discuss.games.moo2' newsgroup on the 'news.sff.net' server.
