@@ -1,6 +1,8 @@
 ﻿#include "Graphics.h"
 #include "Texture.h"
 
+#include <glog/logging.h>
+
 #include <stdexcept>
 #include <format>
 #include <filesystem>
@@ -38,6 +40,7 @@ Graphics::Graphics(GraphicsContext context)
 {
    if (!SDL_Init(SDL_INIT_VIDEO))
    {
+      LOG(ERROR) << "SDL could not initialize! SDL error: " << SDL_GetError();
       throw std::runtime_error(std::format("SDL could not initialize! SDL error: %s", SDL_GetError()));
    }
 
@@ -154,18 +157,40 @@ void Graphics::SetCursor(const std::string& fileName)
    SDL_SetCursor(m_cursor.get());
 }
 
-IGraphics::RunResult Graphics::Run()
+void Graphics::DrawFilledRect(const Rect& area, const Color& cl)
 {
-   SDL_Event event{};
-   if (SDL_PollEvent(&event))
+   SDL_FRect rc{ .x = (float)area.x, .y = (float)area.y, .w = (float)area.w, .h = (float)area.h };
+   SDL_RenderFillRect(m_renderer.get(), &rc);
+}
+
+void Graphics::DrawPolygons(std::span<Vertex> vertices, std::span<int> indices)
+{
+   m_tempVertices.resize(vertices.size());
+   for (const auto& vertex: vertices)
    {
-      if (event.type == SDL_EVENT_QUIT)
-      {
-         return RunResult::Quit;
-      }
+      m_tempVertices.push_back({
+         .position = SDL_FPoint{.x = (float)vertex.position.x,
+                                .y = (float)vertex.position.y},
+         .color = SDL_FColor{.r = (float)vertex.color.r, 
+                              .g = (float)vertex.color.g,
+                              .b = (float)vertex.color.b,
+                              .a = (float)vertex.color.a},
+         .tex_coord = SDL_FPoint{.x = (float)vertex.texCoord.x,
+                                .y = (float)vertex.texCoord.y}
+         });
    }
 
-   return RunResult::Continue;
+   SDL_RenderGeometry(m_renderer.get(), nullptr,
+      &m_tempVertices[0], (int)m_tempVertices.size(),
+      indices.data(), (int)indices.size());
+}
+
+Rect Graphics::GetClientRect() const
+{
+   int width;
+   int height;
+   SDL_GetWindowSize(m_window.get(), &width, &height);
+   return { .x = 0, .y = 0, .w = width, .h = height };
 }
 
 }

@@ -9,6 +9,7 @@
 
 #include <memory>
 #include <map>
+#include <vector>
 
 namespace graphics
 {
@@ -29,8 +30,6 @@ struct GraphicsContext
    int m_windowHeight;
 };
 
-
-
 class Graphics: public IGraphics
               , private GraphicsContext
 {
@@ -47,12 +46,15 @@ public:
 
    void SetCursor(const std::string& fileName) override;
 
-   RunResult Run() override;
+   void DrawFilledRect(const Rect& area, const Color& cl) override;
+   void DrawPolygons(std::span<Vertex> vertices, std::span<int> indices) override;
+
+   Rect GetClientRect() const override;
 private:
 
    using InitGuard = std::unique_ptr<const void, void(*)(const void*)>;
 
-   InitGuard m_initSdlGuard = InitGuard{nullptr, nullptr};
+   InitGuard m_initSdlGuard = InitGuard{ nullptr, nullptr };
    InitGuard m_initImgGuard = InitGuard{ nullptr, nullptr };
    InitGuard m_initTtfGuard = InitGuard{ nullptr, nullptr };
 
@@ -61,10 +63,11 @@ private:
 
    SDL_CursorPtr m_cursor;
 
-   //using FontKey = std::pair<std::string, int>;
    using FontMap = std::map<FontMetrics, TTF_FontPtr>;
 
    FontMap m_availableFonts;
+
+   std::vector<SDL_Vertex> m_tempVertices;
 };
 
 }

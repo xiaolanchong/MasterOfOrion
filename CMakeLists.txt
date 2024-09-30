@@ -35,8 +35,9 @@ set(SDLIMAGE_WEBP OFF)
 
 add_subdirectory("SDL_image")
 
-#add_subdirectory("freetype")
-
 set(SDLTTF_BUILD_SHARED_LIBS ON)
 set(SDLTTF_VENDORED ON)
 add_subdirectory("SDL_ttf")
+
+add_subdirectory("glog")
+add_subdirectory("googletest")

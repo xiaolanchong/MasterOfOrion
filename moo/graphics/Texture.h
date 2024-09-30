@@ -20,6 +20,7 @@ public:
 
    bool Draw(const Rect& area) override;
    bool Draw(int x, int y) override;
+   Size GetSize() const override { return { .w = m_width, .h = m_height }; }
 
 private:
    SDL_TexturePtr m_texture;

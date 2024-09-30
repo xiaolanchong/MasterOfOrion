@@ -1,11 +1,10 @@
-﻿
-
-
-#include "moo.h"
+﻿#include "moo.h"
 #include "interfaces/IGraphics.h"
 #include "interfaces/ITexture.h"
-#include "graphics/Graphics.h"
-
+#include "graphics/Environment.h"
+#include "windows/WindowSystem.h"
+#include "game/Game.h"
+#include <glog/logging.h>
 
 constexpr auto SDL_WINDOW_HEIGHT = 990; // 480 * 2;
 constexpr auto SDL_WINDOW_WIDTH = SDL_WINDOW_HEIGHT * 4 / 3; // 640 * 2;
@@ -14,33 +13,25 @@ const std::u8string assetsRootPath = u8R"(c:\project\cpp\moo_assets\)";
 
 int main(int argc, char** argv)
 {
+   google::InitGoogleLogging(argv[0]);
+
    graphics::sdl::GraphicsContext grContext
    { .m_rootFilePath = assetsRootPath,
       .m_windowWidth = SDL_WINDOW_WIDTH, 
       .m_windowHeight = SDL_WINDOW_HEIGHT };
-   graphics::IGraphicsPtr graphics = std::make_shared<graphics::sdl::Graphics>(std::move(grContext));
+   IEnvironmentPtr env = std::make_shared<env::Environment>(std::move(grContext));
+   auto graphics = env->GetGraphics();
 
-   graphics->SetCursor("cursors/pointing_hand.png");
-   auto mainTexture = graphics->CreateTextureFromFile("images/start_screen.png");
+   const auto game = game::Game::Create(game::GameContext{ graphics, env->GetInput()});
 
-  
-   auto textTexture = graphics->CreateTextureFromText(
-      u8"This is my text. Мой текст.", 
-      graphics::FontMetrics{ "bicubik", 36 }, 
-      { .r = 255, .g = 0, .b = 0, .a = 128 });
-   
-
-   while (graphics->Run() != graphics::IGraphics::RunResult::Quit)
+   while (env->Run() != IEnvironment::RunResult::Quit)
    {
-      graphics->BeginDraw();
-
-      if (mainTexture)
-         mainTexture->Draw(0, 0);
-
-      if (textTexture)
-         textTexture->Draw(100, 100);
-
-      graphics->EndDraw();
+      if (game->NeedQuit())
+      {
+         LOG(INFO) << "Need quitting";
+         break;
+      }
+      game->Draw();
    }
 
    return 0;

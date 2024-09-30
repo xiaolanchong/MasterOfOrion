@@ -1,4 +1,4 @@
-
+Name, Number, Tech field number, ?, Tech class, ?
 Tech0   : "No Tech"                    ,    0,     TF0,  0,    0,    1;
 Tech1   : "Achilles Targeting Unit"    ,    1,    TF49,  1,   27,    1;
 Tech2   : "Adamantium Armor"           ,    2,    TF48,  1,   32,    1;

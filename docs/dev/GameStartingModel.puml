@@ -1,0 +1,45 @@
+@startuml
+!theme plain
+title Game Starting Model
+
+[*] --> InitialLoadingScreen : Start application
+
+InitialLoadingScreen: status text
+InitialLoadingScreen --> StartScreen: Required resources loaded
+
+StartScreen : Continue Game
+StartScreen : Start New Game
+StartScreen : Load Game
+StartScreen : Multiplayer
+StartScreen : Settings
+StartScreen : Hall of Fame
+StartScreen : Quit
+
+
+StartScreen --> PrevGameLoadingScreen: Continue Game pressed
+
+PrevGameLoadingScreen: Status text
+
+PrevGameLoadingScreen --> MainScreen: Last game loading succeeded
+PrevGameLoadingScreen --> StartScreen: Last game loading failed
+
+
+StartScreen  --> [*]: Quit pressed
+
+StartScreen  --> RaceSelectionScreen: Start New Game pressed
+
+RaceSelectionScreen: Race list
+RaceSelectionScreen: Custom race button
+RaceSelectionScreen: Banner color Picker
+RaceSelectionScreen: Ruler name edit
+RaceSelectionScreen: Ok button
+RaceSelectionScreen: Back button
+
+RaceSelectionScreen --> GalaxyGenerationScreen : Ok button pressed
+RaceSelectionScreen --> StartScreen  : Back button pressed
+
+GalaxyGenerationScreen : Status text
+GalaxyGenerationScreen --> MainScreen: Galaxy generation succeeded
+GalaxyGenerationScreen --> RaceSelectionScreen: Galaxy generation failed
+
+@enduml

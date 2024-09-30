@@ -1,4 +1,4 @@
-Name, Number, Tech number, Class, Ammo count, Space, Cost, 
+Name, Number, Tech number, Class, Ammo count, Space, Cost, Characteristics (bit mask), Min. damage?, Max. damage?, Obsolete min damage?, Obsolete max damage?, Acceptable mods (bit mask)
 "No Weapons"          ,    0,   Tech0,  0,255,    0,    0,0000000000000000,    0,    0,  0,  0,0000000000000000;
 "Mass Driver"         ,    1, Tech104,  0,255,   10,    7,0000000000000100,    6,    6,  6,  6,0000000010001110;
 "Gauss Cannon"        ,    2,  Tech78,  0,255,   10,   10,0000000000000100,   18,   18, 10, 10,0000000010001010;
