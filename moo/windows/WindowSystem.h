@@ -3,6 +3,7 @@
 #include "../interfaces/IInput.h"
 #include "../interfaces/IGraphics.h"
 #include "Window.h"
+#include "TimerFactory.h"
 
 #include <queue>
 #include <stack>
@@ -10,14 +11,17 @@
 namespace windows
 {
 
-class WindowSystem: public input::IInputCallback,
-   public IWindowEnvironment
+class WindowSystem: public input::IInputCallback
+                  , public IWindowEnvironment
 {
 public:
+   explicit WindowSystem(zeit::ITimeServicePtr timeService = nullptr);
+
    void SetClientSize(int width, int height);
    void Draw();
+   void PreDraw();
 
-   void DestroyWindows() { m_topWindows.clear(); }
+   //void DestroyWindows() { m_topWindows.clear(); }
 
    template<typename WindowType, typename... Args>
    std::shared_ptr<WindowType> Create(Args&&... args);
@@ -28,6 +32,7 @@ private:
 
    graphics::Rect GetClientRect() const override
       { return { .x = 0, .y = 0, .w = m_screenWidth, .h = m_screenHeight }; }
+   TimerHandle CreateTimer(std::chrono::milliseconds period, OnTimer&& onTimer) override;
 
    enum class VisitResult
    {
@@ -45,7 +50,14 @@ private:
 
    std::list<BaseWindowWeakPtr> m_topWindows;
    std::queue<BaseWindowPtr> m_enumerateQueue;
-   std::stack<BaseWindowPtr> m_enumerateStack;
+   enum class ChildrenAdded
+   {
+      Yes,
+      NotYet
+   };
+   std::stack<std::pair<BaseWindowPtr, ChildrenAdded>> m_enumerateStack;
+
+   TimerFactory m_timerFactory;
 };
 
 template<typename WindowType, typename... Args>

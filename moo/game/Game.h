@@ -3,6 +3,7 @@
 #include "ui/IScreen.h"
 #include "../interfaces/IGraphics.h"
 #include "../interfaces/IInput.h"
+#include "../interfaces/ITimeService.h"
 #include <memory>
 
 namespace game
@@ -11,6 +12,7 @@ namespace game
    {
       graphics::IGraphicsPtr graphics;
       input::IInputPtr input;
+      zeit::ITimeServicePtr timeService;
    };
 
    class Game: private GameContext
@@ -21,23 +23,30 @@ namespace game
       static std::shared_ptr<Game> Create(GameContext context);
 
       bool NeedQuit() const { return m_needQuit; }
-      void Draw();
+      void ProcessFrame();
 
    private:
       explicit Game(GameContext context);
 
       void ToStart() override;
-      void ToNewGame() override;
+      void ToGalaxy() override;
+     // void ToStarSystem() override;
+     // void ToPlanet() override;
       void Quit() override;
 
       void init();
 
       template<typename ScreenType>
-      void setCurrentScreen();
+      ui::IScreenPtr createScreen();
    private:
 
       bool m_needQuit = false;
-      std::shared_ptr<ui::IScreen> m_currentScreen;
+      ui::IScreenPtr m_currentScreen;
+
+      ui::IScreenPtr m_startScreen;
+      ui::IScreenPtr m_galaxyScreen;
+      ui::IScreenPtr m_starSystemScreen;
+      ui::IScreenPtr m_planetScreen;
    };
 
 }

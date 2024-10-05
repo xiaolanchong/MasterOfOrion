@@ -21,6 +21,8 @@ namespace windows
 
       using OnPressed = std::function<void()>;
 
+      graphics::Rect GetRect() const override;
+
    protected:
       struct Textures
       {
@@ -33,12 +35,12 @@ namespace windows
          graphics::Point topLeft, OnPressed onPressed);
 
       void Draw() override;
-      graphics::Rect GetRect() const override;
       void MoveTo(const graphics::Point& topLeft) override;
 
       HandleResult OnMouseHover(HoverState state) override;
-      virtual HandleResult OnMouseButtonPressed(input::IInputCallback::Pressed pressed,
-         input::IInputCallback::Button button, int x, int y);
+
+      HandleResult OnMouseButtonPressed(input::IInputCallback::Pressed pressed,
+         input::IInputCallback::Button button, int x, int y) override;
 
       enum ExtState
       {

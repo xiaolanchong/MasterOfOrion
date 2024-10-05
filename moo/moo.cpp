@@ -31,7 +31,7 @@ int main(int argc, char** argv)
          LOG(INFO) << "Need quitting";
          break;
       }
-      game->Draw();
+      game->ProcessFrame();
    }
 
    return 0;

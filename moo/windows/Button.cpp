@@ -89,11 +89,25 @@ namespace windows
    BaseButton::Textures TextButton::createTextures(const graphics::IGraphicsPtr& graphics,
       const std::u8string& text, const Theme& theme)
    {
+      auto enabledTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.enabled);
+
+      graphics::ITexturePtr hoveredTexture;
+      if (theme.hovered == theme.enabled)
+         hoveredTexture = enabledTexture;
+      else
+         hoveredTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.hovered);
+
+      graphics::ITexturePtr disabledTexture;
+      if (theme.disabled == theme.enabled)
+         disabledTexture = enabledTexture;
+      else
+         disabledTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.disabled);
+
       Textures textures
       {
-         .hoveredTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.hovered),
-         .enabledTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.enabled),
-         .disabledTexture = graphics->CreateTextureFromText(text, theme.fontMetrics, theme.disabled)
+         .hoveredTexture = hoveredTexture,
+         .enabledTexture = enabledTexture,
+         .disabledTexture = disabledTexture
       };
       return textures;
    }
@@ -107,11 +121,25 @@ namespace windows
 
    BaseButton::Textures ImageButton::createTextures(const graphics::IGraphicsPtr& graphics, const Theme& theme)
    {
+      auto enabledTexture = graphics->CreateTextureFromFile(theme.enabledImageName);
+
+      graphics::ITexturePtr hoveredTexture;
+      if (theme.hoveredImageName.empty() || theme.hoveredImageName == theme.enabledImageName)
+         hoveredTexture = enabledTexture;
+      else
+         hoveredTexture = graphics->CreateTextureFromFile(theme.hoveredImageName);
+
+      graphics::ITexturePtr disabledTexture;
+      if (theme.disabledImageName.empty() || theme.disabledImageName == theme.enabledImageName)
+         disabledTexture = enabledTexture;
+      else
+         disabledTexture = graphics->CreateTextureFromFile(theme.disabledImageName);
+
       Textures textures
       {
-         .hoveredTexture = graphics->CreateTextureFromFile(theme.hoveredImageName),
-         .enabledTexture = graphics->CreateTextureFromFile(theme.enabledImageName),
-         .disabledTexture = graphics->CreateTextureFromFile(theme.disabledImageName)
+         .hoveredTexture = hoveredTexture,
+         .enabledTexture = enabledTexture,
+         .disabledTexture = disabledTexture
       };
       return textures;
    }

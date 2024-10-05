@@ -100,19 +100,19 @@ ITexturePtr Graphics::CreateTextureFromText(const std::u8string& text, const Fon
       auto fontPath = rootPath / u8"fonts" / (fontMetrics.fontName + ".otf");
       if (!std::filesystem::exists(fontPath))
       {
-         fontPath = rootPath / u8"fonts" / fontMetrics.fontName / ".ttf";
+         fontPath = rootPath / u8"fonts" / (fontMetrics.fontName + ".ttf");
          if (!std::filesystem::exists(fontPath))
          {
             SDL_Log("Can't locate font %s", fontMetrics.fontName.c_str());
-            return nullptr;
+            throw std::runtime_error(std::format("Can't locate font %s", fontMetrics.fontName));
          }
       }
 
       font = { TTF_OpenFont((const char*)fontPath.u8string().c_str(), fontMetrics.size), &TTF_CloseFont };
       if (!font)
       {
-         SDL_Log("Can't create font %s, %dpt", fontMetrics.fontName.c_str(), fontMetrics.size);
-         return nullptr;
+         SDL_Log("Can't create font %s, %d pt", fontMetrics.fontName.c_str(), fontMetrics.size);
+         throw std::runtime_error(std::format("Can't create font %s, %d pt", fontMetrics.fontName, fontMetrics.size));
       }
 
       m_availableFonts.emplace(fontMetrics, font);

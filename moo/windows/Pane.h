@@ -6,25 +6,29 @@
 #include "../interfaces/Types.h"
 
 #include <string>
+#include <optional>
 
 namespace windows
 {
 
+// Text static window
 class Static : public BaseWindow
 {
 	friend class BaseWindow;
+public:
+	graphics::Rect GetRect() const override;
 protected:
-	Static(const graphics::IGraphicsPtr& graphics, const graphics::Rect& rect,
+	Static(const graphics::IGraphicsPtr& graphics, const graphics::Point& topLeft,
 		const std::u8string& text, const graphics::FontMetrics& fontMetrics, const graphics::Color& cl);
 
 	void Draw() override;
-	graphics::Rect GetRect() const override { return m_rect; }
-
+	
 private:
 	graphics::ITexturePtr m_texture;
-	graphics::Rect m_rect;
+	graphics::Point m_topLeft;
 };
 	
+// Image window stretch to the given rect (usually parent windows)
 class Pane : public BaseWindow
 {
 	friend class WindowSystem;
@@ -44,16 +48,18 @@ private:
 class Image : public BaseWindow
 {
 	friend class BaseWindow;
-protected:
-	Image(const graphics::IGraphicsPtr& graphics,
-		const graphics::Point topLeft, const std::string& imageFileName);
+public:
+	graphics::Rect GetRect() const override;
+private:
+	Image(WindowContext context, graphics::Point topLeft, std::optional<graphics::Size> optSize,
+		const std::string& imageFileName);
 
 	void Draw() override;
-	graphics::Rect GetRect() const override;
 
 private:
 	graphics::ITexturePtr m_texture;
 	graphics::Point m_topLeft;
+	std::optional<graphics::Size> m_optSize;
 };
 	
 }

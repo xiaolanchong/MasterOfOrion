@@ -10,16 +10,16 @@ namespace game
    }
 
    template<typename ScreenType>
-   void Game::setCurrentScreen()
+   ui::IScreenPtr Game::createScreen()
    {
       m_currentScreen = nullptr;
       ui::ScreenContext screenContext{ .graphics = graphics, .input = input, .callback = shared_from_this() };
-      m_currentScreen = std::make_shared<ScreenType>(std::move(screenContext));
+      return std::make_shared<ScreenType>(std::move(screenContext));
    }
 
    void Game::init()
    {
-      setCurrentScreen<ui::StartScreen>();
+      ToStart();
    }
 
    std::shared_ptr<Game> Game::Create(GameContext context)
@@ -29,8 +29,10 @@ namespace game
       return newGame;
    }
 
-   void Game::Draw()
+   void Game::ProcessFrame()
    {
+      m_currentScreen->PreDraw();
+
       graphics->BeginDraw();
       m_currentScreen->Draw();
       graphics->EndDraw();
@@ -38,11 +40,16 @@ namespace game
 
    void Game::ToStart()
    {
+      if (!m_startScreen)
+         m_startScreen = createScreen<ui::StartScreen>();
+      m_currentScreen = m_startScreen;
    }
 
-   void Game::ToNewGame()
+   void Game::ToGalaxy()
    {
-      setCurrentScreen<ui::GalaxyScreen>();
+      if (!m_galaxyScreen)
+         m_galaxyScreen = createScreen<ui::GalaxyScreen>();
+      m_currentScreen = m_galaxyScreen;
    }
 
    void Game::Quit()

@@ -13,6 +13,7 @@ namespace game::ui
    public:
       explicit StartScreen(ScreenContext context);
 
+      void PreDraw() override;
       void Draw() override;
 
    private:

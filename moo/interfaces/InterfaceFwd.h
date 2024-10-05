@@ -23,3 +23,9 @@ namespace input
    using IInputCallbackPtr = std::shared_ptr<IInputCallback>;
 
 }
+
+namespace zeit
+{
+   class ITimeService;
+   using ITimeServicePtr = std::shared_ptr<ITimeService>;
+}

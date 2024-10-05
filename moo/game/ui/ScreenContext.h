@@ -9,6 +9,7 @@ namespace game::ui
    {
       graphics::IGraphicsPtr graphics;
       input::IInputPtr input;
+      zeit::ITimeServicePtr timeService;
       IScreenCallbackWeakPtr callback;
    };
 }

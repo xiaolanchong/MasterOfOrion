@@ -32,11 +32,15 @@ add_executable (moo
 "windows/MenuWindow.cpp"
 "windows/Button.h"
 "windows/Button.cpp"
+"windows/TimerFactory.h"
+"windows/TimerFactory.cpp"
 
 "game/ui/StartScreen.h"
 "game/ui/StartScreen.cpp"
 "game/ui/GalaxyScreen.h"
 "game/ui/GalaxyScreen.cpp"
+"game/ui/StarSystemWindow.h"
+"game/ui/StarSystemWindow.cpp"
 
 "game/Game.h"
 "game/Game.cpp"

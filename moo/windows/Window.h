@@ -7,6 +7,7 @@
 #include <memory>
 #include <list>
 #include <functional>
+#include <chrono>
 
 namespace windows
 {
@@ -28,6 +29,10 @@ class IWindowEnvironment
 public:
    virtual ~IWindowEnvironment() = default;
    virtual graphics::Rect GetClientRect() const = 0;
+
+   using TimerHandle = std::shared_ptr<void>;
+   using OnTimer = std::function<void()>;
+   virtual TimerHandle CreateTimer(std::chrono::milliseconds period, OnTimer&& onTimer) = 0;
 };
 
 using IWindowEnvironmentPtr = std::shared_ptr<IWindowEnvironment>;
@@ -43,7 +48,6 @@ using BaseWindowPtr = std::shared_ptr<BaseWindow>;
 using BaseWindowWeakPtr = std::weak_ptr<BaseWindow>;
 
 class BaseWindow: public IWindow
-               // , public input::IInputCallback
                 , public std::enable_shared_from_this<BaseWindow>
 {
 public:
@@ -55,7 +59,10 @@ public:
 
    virtual graphics::Rect GetRect() const = 0;
 
-   virtual void MoveTo(const graphics::Point& topLeft) {}
+   virtual void MoveTo(const graphics::Point& /*topLeft*/) {}
+   void Show() { m_isVisible = true; }
+   void Hide() { m_isVisible = false; }
+   bool IsVisible() const { return m_isVisible;  }
 
    enum class HandleResult
    {
@@ -63,11 +70,11 @@ public:
       Continue,
    };
 
-   virtual HandleResult OnMouseMove(int x, int y)
+   virtual HandleResult OnMouseMove(int /*x*/, int /*y*/)
       { return HandleResult::Continue; }
 
-   virtual HandleResult OnMouseButtonPressed(input::IInputCallback::Pressed pressed,
-      input::IInputCallback::Button button, int x, int y)
+   virtual HandleResult OnMouseButtonPressed(input::IInputCallback::Pressed /*pressed*/,
+      input::IInputCallback::Button /*button*/, int /*x*/, int /*y*/)
       { return HandleResult::Continue; }
 
    enum class HoverState
@@ -76,7 +83,7 @@ public:
       Above
    };
 
-   virtual HandleResult OnMouseHover(HoverState state)
+   virtual HandleResult OnMouseHover(HoverState /*state*/)
    {
       return HandleResult::Continue;
    }
@@ -89,6 +96,7 @@ private:
    BaseWindowWeakPtr m_parent;
    std::list<BaseWindowWeakPtr> m_childWindows;
    std::vector<BaseWindowPtr> m_enumeratedWindows;
+   bool m_isVisible = true;
 };
 
 template<typename WindowType, typename... Args>

@@ -10,7 +10,9 @@ namespace game::ui
       virtual ~IScreenCallback() = default;
 
       virtual void ToStart() = 0;
-      virtual void ToNewGame() = 0;
+      virtual void ToGalaxy() = 0;
+    //  virtual void ToStarSystem() = 0;
+      //virtual void ToPlanet() = 0;
       virtual void Quit() = 0;
    };
 
@@ -22,6 +24,7 @@ namespace game::ui
    public:
       virtual ~IScreen() = default;
 
+      virtual void PreDraw() = 0;
       virtual void Draw() = 0;
    };
 

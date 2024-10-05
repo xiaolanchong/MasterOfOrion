@@ -21,13 +21,6 @@ namespace game::ui
       auto mainPain = m_windowSystem->Create<Pane>(graphics, graphics->GetClientRect(), "images/start_screen/background.png");
       m_windows.push_back(mainPain);
       {
-
-/*
-* Native MOO2 menu theme
-            .hovered = {.r = 56, .g = 124, .b = 36, .a = 255 },
-            .enabled = {.r = 44, .g = 88, .b = 28, .a = 255 },
-            .disabled = {.r = 64, .g = 72, .b = 64, .a = 255 },
-*/
          windows::TextButton::Theme theme{
             .fontMetrics = { "Days Sans Black", 48 },
             .hovered = {.r = 0x33, .g = 0xff, .b = 0x33, .a = 192 },
@@ -48,7 +41,7 @@ namespace game::ui
             {
                if (auto callbackPtr = callback.lock())
                {
-                  callbackPtr->ToNewGame();
+                  callbackPtr->ToGalaxy();
                }
             };
 
@@ -66,6 +59,11 @@ namespace game::ui
    void StartScreen::Draw()
    {
       m_windowSystem->Draw();
+   }
+
+   void StartScreen::PreDraw()
+   {
+      m_windowSystem->PreDraw();
    }
 
 }
