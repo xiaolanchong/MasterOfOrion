@@ -27,7 +27,7 @@ namespace game::ui
 
       auto onPressed = [this]() { m_mainPain->Hide(); };
       auto closeButton = m_mainPain->Create<ImageButton>(context, ImageButton::State::Enabled, std::move(theme),
-         graphics::Point{ leftX + width - 24 - 7, topY + 7 }, onPressed);
+         graphics::Point{ width - 24 - 7, 7 }, onPressed);
       m_windows.push_back(closeButton);
 
       createOrbits(context);
@@ -47,7 +47,7 @@ namespace game::ui
       const auto size4 = Size{ 600, 300 };
       const auto size5 = Size{ 750, 375 };
       const auto size6 = Size{ 900, 450 };
-      const Point center{ leftX + width / 2, topY + height / 2 };
+      const Point center = { /*leftX*/ + width / 2, /*topY*/ + height / 2 };
    }
 
    void StarSystemWindow::createOrbits(const WindowContext& context)
@@ -118,5 +118,4 @@ namespace game::ui
 
    void StarSystemWindow::Show() { m_mainPain->Show(); }
    void StarSystemWindow::Hide() { m_mainPain->Hide(); }
-
 }

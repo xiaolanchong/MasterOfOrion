@@ -9,7 +9,7 @@
 namespace windows
 {
    class BaseButton: public BaseWindow
-               , protected WindowContext
+                   , protected WindowContext
    {
    public:
 
@@ -34,8 +34,8 @@ namespace windows
       BaseButton(WindowContext context, Textures textures, State state,
          graphics::Point topLeft, OnPressed onPressed);
 
-      void Draw() override;
-      void MoveTo(const graphics::Point& topLeft) override;
+      void Draw(const graphics::Point& offsetFromScreen) override;
+//      void MoveTo(const graphics::Point& topLeft) override;
 
       HandleResult OnMouseHover(HoverState state) override;
 

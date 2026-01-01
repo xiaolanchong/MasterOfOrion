@@ -21,7 +21,7 @@ class IWindow
 public:
    virtual ~IWindow() = default;
 
-   virtual void Draw() = 0;
+   virtual void Draw(const graphics::Point& offsetFromScreen) = 0;
 };
 
 class IWindowEnvironment
@@ -59,7 +59,7 @@ public:
 
    virtual graphics::Rect GetRect() const = 0;
 
-   virtual void MoveTo(const graphics::Point& /*topLeft*/) {}
+   //virtual void MoveTo(const graphics::Point& /*topLeft*/) {}
    void Show() { m_isVisible = true; }
    void Hide() { m_isVisible = false; }
    bool IsVisible() const { return m_isVisible;  }

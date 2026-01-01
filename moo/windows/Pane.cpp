@@ -9,9 +9,9 @@ namespace windows
 		m_texture = graphics->CreateTextureFromText(text, fontMetrics, cl);
 	}
 
-	void Static::Draw()
+	void Static::Draw(const graphics::Point& offsetFromScreen)
 	{
-		m_texture->Draw(m_topLeft.x, m_topLeft.y);
+		m_texture->Draw(offsetFromScreen.x + m_topLeft.x, offsetFromScreen.y + m_topLeft.y);
 	}
 
 	graphics::Rect Static::GetRect() const
@@ -27,9 +27,9 @@ namespace windows
 		m_texture = graphics->CreateTextureFromFile(bgImageFileName);
 	}
 
-	void Pane::Draw()
+	void Pane::Draw(const graphics::Point& offsetFromScreen)
 	{
-		m_texture->Draw(m_rect);
+		m_texture->Draw({ m_rect.x + offsetFromScreen.x, m_rect.y + offsetFromScreen.y, m_rect.w, m_rect.h });
 	}
 
 	Image::Image(WindowContext context,
@@ -41,12 +41,12 @@ namespace windows
 		m_texture = context.graphics->CreateTextureFromFile(imageFileName);
 	}
 
-	void Image::Draw()
+	void Image::Draw(const graphics::Point& offsetFromScreen)
 	{
 		if (m_optSize)
-			m_texture->Draw(graphics::Rect{ m_topLeft.x, m_topLeft.y, m_optSize->w, m_optSize->h });
+			m_texture->Draw(graphics::Rect{ offsetFromScreen.x + m_topLeft.x, offsetFromScreen.y + m_topLeft.y, m_optSize->w, m_optSize->h });
 		else
-			m_texture->Draw(m_topLeft.x, m_topLeft.y);
+			m_texture->Draw(offsetFromScreen.x + m_topLeft.x, offsetFromScreen.y + m_topLeft.y);
 	}
 
 	graphics::Rect Image::GetRect() const

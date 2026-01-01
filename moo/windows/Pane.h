@@ -21,7 +21,7 @@ protected:
 	Static(const graphics::IGraphicsPtr& graphics, const graphics::Point& topLeft,
 		const std::u8string& text, const graphics::FontMetrics& fontMetrics, const graphics::Color& cl);
 
-	void Draw() override;
+	void Draw(const graphics::Point& offsetFromScreen) override;
 	
 private:
 	graphics::ITexturePtr m_texture;
@@ -37,7 +37,7 @@ protected:
 	Pane(const graphics::IGraphicsPtr& graphics,
 		const graphics::Rect& rect, const std::string& bgImageFileName);
 
-	void Draw() override;
+	void Draw(const graphics::Point& offsetFromScreen) override;
 	graphics::Rect GetRect() const override { return m_rect; }
 
 private:
@@ -54,7 +54,7 @@ private:
 	Image(WindowContext context, graphics::Point topLeft, std::optional<graphics::Size> optSize,
 		const std::string& imageFileName);
 
-	void Draw() override;
+	void Draw(const graphics::Point& offsetFromScreen) override;
 
 private:
 	graphics::ITexturePtr m_texture;

@@ -9,7 +9,7 @@ add_executable (mootest
 
 	"WindowSubsystemTest.cpp"
     "TimerTest.cpp"
-)
+ "MockWindow.h")
 
 include_directories("../../googletest/src")
 include_directories("../../googletest/googlemock/include")

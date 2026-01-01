@@ -15,7 +15,7 @@ namespace windows
 
    }
 
-   void BaseButton::Draw()
+   void BaseButton::Draw(const graphics::Point& offsetFromScreen)
    {
       graphics::ITexturePtr texture = nullptr;
       switch (m_state)
@@ -32,7 +32,7 @@ namespace windows
       }
 
       if (texture)
-         texture->Draw(m_topLeft.x, m_topLeft.y);
+         texture->Draw(offsetFromScreen.x + m_topLeft.x, offsetFromScreen.y + m_topLeft.y);
    }
 
    graphics::Rect BaseButton::GetRect() const
@@ -40,12 +40,12 @@ namespace windows
       auto size = m_textures.hoveredTexture->GetSize();
       return { .x = m_topLeft.x, .y = m_topLeft.y, .w = size.w, .h = size.h };
    }
-
+/*
    void BaseButton::MoveTo(const graphics::Point& topLeft)
    {
       m_topLeft = topLeft;
    }
-
+*/
    BaseWindow::HandleResult BaseButton::OnMouseHover(HoverState state)
    {
       if (m_state == ExtState::Disabled)

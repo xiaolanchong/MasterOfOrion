@@ -13,10 +13,10 @@ namespace windows
    void WindowSystem::OnMouseMove(int x, int y)
    {
       BaseWindowPtr hoveredWindow;
-      deepFirstSearch([&](const BaseWindowPtr& window)
+      deepFirstSearch([&](const BaseWindowPtr& window, const graphics::Point& parentOffsetFromScreen, const graphics::Rect& windowRect)
          {
-            auto rc = window->GetRect();
-            if (graphics::IsInRect(x, y, rc))
+            const graphics::Point pt{ x - parentOffsetFromScreen.x, y - parentOffsetFromScreen.y };
+            if (graphics::IsInRect(pt.x, pt.y, windowRect))
             {
                hoveredWindow = window;
                return VisitResult::Quit;
@@ -44,12 +44,12 @@ namespace windows
 
    void WindowSystem::OnMouseButtonPressed(Pressed pressed, Button button, int x, int y)
    {
-      deepFirstSearch([&](const BaseWindowPtr& window)
+      deepFirstSearch([&](const BaseWindowPtr& window, const graphics::Point& parentOffsetFromScreen, const graphics::Rect& windowRect)
          {
-            auto rc = window->GetRect();
-            if (graphics::IsInRect(x, y, rc))
+            const graphics::Point pt{ x - parentOffsetFromScreen.x, y - parentOffsetFromScreen.y };
+            if (graphics::IsInRect(pt.x, pt.y, windowRect))
             {
-               if (window->OnMouseButtonPressed(pressed, button, x, y) == BaseWindow::HandleResult::Handled)
+               if (window->OnMouseButtonPressed(pressed, button, pt.x - windowRect.x, pt.y - windowRect.y) == BaseWindow::HandleResult::Handled)
                   return VisitResult::Quit;
             }
             return VisitResult::Continue;
@@ -64,9 +64,9 @@ namespace windows
 
    void WindowSystem::Draw()
    {
-      breadthFirstSearch([](const BaseWindowPtr& window)
+      breadthFirstSearch([](const BaseWindowPtr& window, const graphics::Point& offsetFromScreen, const graphics::Rect&)
          {
-            window->Draw();
+            window->Draw(offsetFromScreen);
             return VisitResult::Continue;
          });
    }
@@ -87,18 +87,24 @@ namespace windows
 
       for (auto topWindowWeak : m_topWindows)
          if (auto topWindow = topWindowWeak.lock())
-            m_enumerateQueue.push(topWindow);
+            m_enumerateQueue.push({ topWindow, {0, 0}, topWindow->GetRect()});
       while (!m_enumerateQueue.empty())
       {
-         auto window = m_enumerateQueue.front();
+         auto item = m_enumerateQueue.front();
          m_enumerateQueue.pop();
-         if (!window->IsVisible())
+         if (!item.window->IsVisible())
          {
             continue;
          }
-         if (visitor(window) == VisitResult::Quit)
+         if (visitor(item.window, item.offsetFromScreen, item.windowRect) == VisitResult::Quit)
             break;
-         window->EnumerateChildWindows([this](const BaseWindowPtr& window) { m_enumerateQueue.push(window); });
+         const graphics::Rect rect = item.windowRect;
+         const graphics::Point offsetForChild = { rect.x + item.offsetFromScreen.x, rect.y + item.offsetFromScreen.y };
+         item.window->EnumerateChildWindows([&](const BaseWindowPtr& childWindow)
+            {
+               if (childWindow->IsVisible())
+                  m_enumerateQueue.push({ childWindow, offsetForChild, childWindow->GetRect() });
+            });
       }
 
       while (!m_enumerateQueue.empty())
@@ -110,10 +116,10 @@ namespace windows
       assert(m_enumerateStack.empty());
       for (auto topWindowWeak : m_topWindows)
          if (auto topWindow = topWindowWeak.lock())
-            m_enumerateStack.push({ topWindow, ChildrenAdded::NotYet });
+            m_enumerateStack.push({ topWindow, ChildrenAdded::NotYet, {0, 0}, topWindow->GetRect()});
       while (!m_enumerateStack.empty())
       {
-         auto& [window, childrenAdded] = m_enumerateStack.top();
+         auto& [window, childrenAdded, offsetFromScreen, windowRect] = m_enumerateStack.top();
          if (!window->IsVisible())
          {
             m_enumerateStack.pop();
@@ -121,14 +127,17 @@ namespace windows
          else if (childrenAdded == ChildrenAdded::Yes)
          {
             m_enumerateStack.pop();
-            if (visitor(window) == VisitResult::Quit)
+            if (visitor(window, offsetFromScreen, windowRect) == VisitResult::Quit)
                break;
          }
          else
          {
             childrenAdded = ChildrenAdded::Yes;
-            BaseWindowPtr(window)->EnumerateChildWindows([this](const BaseWindowPtr& window) { 
-               m_enumerateStack.push({ window, ChildrenAdded::NotYet });
+            const graphics::Point offsetForChild = { windowRect.x + offsetFromScreen.x, windowRect.y + offsetFromScreen.y };
+            BaseWindowPtr(window)->EnumerateChildWindows([&](const BaseWindowPtr& childWindow)
+            {
+               if (childWindow->IsVisible())
+                  m_enumerateStack.push({ childWindow, ChildrenAdded::NotYet, offsetForChild, childWindow->GetRect()});
             });
          }
       }

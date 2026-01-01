@@ -18,10 +18,8 @@ public:
    explicit WindowSystem(zeit::ITimeServicePtr timeService = nullptr);
 
    void SetClientSize(int width, int height);
-   void Draw();
    void PreDraw();
-
-   //void DestroyWindows() { m_topWindows.clear(); }
+   void Draw();
 
    template<typename WindowType, typename... Args>
    std::shared_ptr<WindowType> Create(Args&&... args);
@@ -39,7 +37,8 @@ private:
       Continue,
       Quit,
    };
-   using Visitor = std::function<VisitResult(const BaseWindowPtr& window)>;
+   using Visitor = std::function<VisitResult(const BaseWindowPtr& window,
+      const graphics::Point& offsetFromScreen, const graphics::Rect& windowRect)>;
    void breadthFirstSearch(const Visitor& visitor);
    void deepFirstSearch(const Visitor& visitor);
 private:
@@ -49,13 +48,27 @@ private:
    BaseWindowWeakPtr m_currentHoveredWindow;
 
    std::list<BaseWindowWeakPtr> m_topWindows;
-   std::queue<BaseWindowPtr> m_enumerateQueue;
+   struct QueueItem
+   {
+      BaseWindowPtr window;
+      graphics::Point offsetFromScreen;
+      graphics::Rect windowRect;
+   };
+   std::queue<QueueItem> m_enumerateQueue;
    enum class ChildrenAdded
    {
       Yes,
       NotYet
    };
-   std::stack<std::pair<BaseWindowPtr, ChildrenAdded>> m_enumerateStack;
+
+   struct StackItem
+   {
+      BaseWindowPtr window;
+      ChildrenAdded childrenAdded;
+      graphics::Point offsetFromScreen;
+      graphics::Rect windowRect;
+   };
+   std::stack<StackItem> m_enumerateStack;
 
    TimerFactory m_timerFactory;
 };
